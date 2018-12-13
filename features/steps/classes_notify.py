@@ -11,20 +11,23 @@ def set_notification_time(context, hour):
 
 @given("tomorrow is rainy")
 def tomorrow_is_rainy(context):
-    context.tomorrow_weather = "Rainy"
+    context.users_location = "saint-petersburg"
+    if "weather_forecast" not in context:
+        context.weather_forecast = {}
+    context.weather_forecast["saint-petersburg"] = "Rainy"
+
 
 @given("tomorrow in {location} is {weather}")
 def tomorrow_weather_in_location(context, location, weather):
-    if not context.weather_forecast:
+    if "weather_forecast" not in context:
         context.weather_forecast = {}
     context.weather_forecast[location] = weather
 
 
-
+## этот
 @given("user is located in {location}")
 def user_is_located(context, location):
-    pass
-
+    context.users_location = location
 
 
 @when("it is notification time")
@@ -69,11 +72,11 @@ def va_take_umbrella(context):
     from weather_mock import get_weather_for_tomorrow_mock as get_weather_for_tomorrow
     # from weather_mock import get_weather_for_tomorrow
 
-    users_location = ""
-    tomorrow_weather = ""
+    users_location = context.users_location
+    tomorrow_weather = context.weather_forecast[users_location]
 
     # Get weather forecast
-    forecast = get_weather_for_tomorrow("saint-petersburg")
+    forecast = get_weather_for_tomorrow(users_location)
     tomorrow_weather_forecast = forecast["text"]
 
     if context.va_notifies:

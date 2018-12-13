@@ -30,7 +30,7 @@ Feature: Classes start notification
 
   Scenario: VA does not notify about tomorrow classes
     Given tomorrow we have classes
-      And tomorrow in saint-petersburg is rainy
+      And tomorrow in saint-petersburg is Rainy
       And user is located in saint-petersburg
       And notification time is 9pm
      When it is 9pm
