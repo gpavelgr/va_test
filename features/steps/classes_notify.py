@@ -15,7 +15,7 @@ def tomorrow_is_rainy(context):
 
 @given("tomorrow in {location} is {weather}")
 def tomorrow_weather_in_location(context, location, weather):
-    if not context.weather_forecast:
+    if "weather_forecast" not in context:
         context.weather_forecast = {}
     context.weather_forecast[location] = weather
 
