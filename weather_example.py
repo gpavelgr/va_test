@@ -7,6 +7,5 @@ condition = lookup.condition
 
 for forecast in lookup.forecast:
     print(forecast.date)
+    print(forecast.text)
     print(forecast.high, forecast.low)
-
-#print(condition.text)
