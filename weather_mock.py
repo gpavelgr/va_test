@@ -1,5 +1,4 @@
 
-
 def get_weather_for_tomorrow(location):
     from weather import Weather, Unit
     weather = Weather(unit=Unit.CELSIUS)
@@ -10,3 +9,8 @@ def get_weather_for_tomorrow(location):
 
 def get_weather_for_tomorrow_mock(location):
     return {"high": 10, "low": 7, "text": "Rainy", "date": "14 Dec 2018"}
+
+
+if __name__ == "__main__":
+    print(get_weather_for_tomorrow("saint-petersburg"))
+
